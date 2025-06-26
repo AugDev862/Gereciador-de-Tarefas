@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  background-color: oklch(55.4% 0.046 257.417);
+  display: flex;
+  justify-content: center;
+}
+
+.titulo {
+  font-size: 30px;
+  color: white;
+  font: bold;
+  text-align: center;
+}
