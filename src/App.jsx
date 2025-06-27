@@ -26,11 +26,32 @@ function App() {
       isCompleted: false,
     },
   ]);
+
+  function onTaskClick(taskId) {
+    const newTasks = tasks.map((task) => {
+      if (taskId == task.id) {
+        return { ...task, isCompleted: !task.isCompleted };
+      }
+
+      return task;
+    });
+    setTasks(newTasks);
+  }
+
+  function onDeleteClick(taskId) {
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(newTasks);
+  }
+
   return (
     <div className="app">
       <div style={{ width: "50%" }}>
         <h1 className="titulo">Gerenciador de Tarefas</h1>
-        <Tasks tasks={tasks} />
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onDeleteClick={onDeleteClick}
+        />
         <AddTask />
       </div>
     </div>

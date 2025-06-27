@@ -17,3 +17,38 @@
   font: bold;
   text-align: center;
 }
+
+.tasks {
+  background-color: oklch(92.9% 0.013 255.508);
+  border-radius: 8px;
+  padding: 2%;
+}
+
+.task {
+  background-color: oklch(70.4% 0.04 256.788);
+  margin: 1%;
+  border-radius: 8px;
+  padding: 1%;
+  display: flex;
+  width: 100%;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.flex {
+  display: flex;
+}
+
+.editarTask {
+  border: none;
+  background-color: oklch(70.4% 0.04 256.788);
+  border-radius: 8px;
+  color: white;
+  margin: 1%;
+  width: 9%;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
