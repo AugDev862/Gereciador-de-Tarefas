@@ -39,11 +39,13 @@ function App() {
       <div className="principal">
         <h1 className="titulo">Gerenciador de Tarefas</h1>
         <AddTask onAddTaskSubmit={onAddTaskSubmit} />
-        <Tasks
-          tasks={tasks}
-          onTaskClick={onTaskClick}
-          onDeleteTaskClick={onDeleteTaskClick}
-        />
+        {tasks.length !== 0 ? (
+          <Tasks
+            tasks={tasks}
+            onTaskClick={onTaskClick}
+            onDeleteTaskClick={onDeleteTaskClick}
+          />
+        ) : null}
       </div>
     </div>
   );

@@ -11,6 +11,12 @@
   justify-content: center;
 }
 
+.returnApp {
+  color: aliceblue;
+  background-color: oklch(55.4% 0.046 257.417);
+  border: none;
+}
+
 .titulo {
   font-size: 30px;
   color: white;
