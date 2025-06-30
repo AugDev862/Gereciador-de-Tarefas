@@ -1,4 +1,4 @@
-import { ChevronRightIcon, DeleteIcon } from "lucide-react";
+import { ChevronRightIcon, Trash2 } from "lucide-react";
 //Componentesrecebem props
 function Tasks(props) {
   console.log(props);
@@ -10,7 +10,7 @@ function Tasks(props) {
             onClick={() => props.onTaskClick(task.id)}
             className={`task ${task.isCompleted && "line-through"}`}
           >
-            {task.tittle}
+            {task.title}
           </button>
 
           <button className="editarTask">
@@ -19,9 +19,9 @@ function Tasks(props) {
 
           <button
             className="editarTask"
-            onClick={() => props.onDeleteClick(task.id)}
+            onClick={() => props.onDeleteTaskClick(task.id)}
           >
-            <DeleteIcon />
+            <Trash2 />
           </button>
         </li>
       ))}

@@ -1,31 +1,11 @@
 import Tasks from "./Components/Tasks";
 import AddTask from "./Components/AddTask";
 import { useState } from "react";
+import { v4 } from "uuid";
 function App() {
   //State (Estado): Quando a variável tem seu conteúdo modificado a página é rederizada novamente
   //hook
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      tittle: "Estudar programação",
-      description:
-        "Esudar programação para se tornar um desenvolvedor full stack.",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      tittle: "Estudar matemática",
-      description:
-        "Esudar matemática para se tornar um desenvolvedor full stack.",
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      tittle: "Estudar inglês",
-      description: "Esudar inglês para se tornar fluente",
-      isCompleted: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {
@@ -38,21 +18,32 @@ function App() {
     setTasks(newTasks);
   }
 
-  function onDeleteClick(taskId) {
+  function onDeleteTaskClick(taskId) {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
   }
 
+  function onAddTaskSubmit(title, description) {
+    const newTask = {
+      id: v4(),
+      title,
+      description,
+      isCompleted: false,
+    };
+    setTasks([...tasks, newTask]);
+    console.log(newTask);
+  }
+
   return (
     <div className="app">
-      <div style={{ width: "50%" }}>
+      <div className="principal">
         <h1 className="titulo">Gerenciador de Tarefas</h1>
+        <AddTask onAddTaskSubmit={onAddTaskSubmit} />
         <Tasks
           tasks={tasks}
           onTaskClick={onTaskClick}
-          onDeleteClick={onDeleteClick}
+          onDeleteTaskClick={onDeleteTaskClick}
         />
-        <AddTask />
       </div>
     </div>
   );
