@@ -1,11 +1,18 @@
 import Tasks from "./Components/Tasks";
 import AddTask from "./Components/AddTask";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 } from "uuid";
+
 function App() {
   //State (Estado): Quando a variável tem seu conteúdo modificado a página é rederizada novamente
   //hook
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {

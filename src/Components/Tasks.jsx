@@ -1,6 +1,17 @@
 import { ChevronRightIcon, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 //Componentesrecebem props
 function Tasks(props) {
+  const navigate = useNavigate();
+
+  function onClickTaskDeatils(task) {
+    const query = new URLSearchParams();
+    query.set("title", task.title);
+    query.set("description", task.description);
+
+    navigate(`/task?${query.toString()}`);
+  }
+
   console.log(props);
   return (
     <ul className="tasks">
@@ -13,7 +24,10 @@ function Tasks(props) {
             {task.title}
           </button>
 
-          <button className="editarTask">
+          <button
+            className="editarTask"
+            onClick={() => onClickTaskDeatils(task)}
+          >
             <ChevronRightIcon />
           </button>
 
